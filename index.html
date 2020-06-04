@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <title>Emails input</title>
+  </head>
+  <body>
+    <div class="emails-form">
+      <h1>Share <strong>Board name</strong> with others</h1>
+      <div id="emails-input"></div>
+    </div>
+    <script src="./emails-input.js"></script>
+    <script>
+      var inputContainerNode = document.querySelector('#emails-input');
+      var emailsInput = EmailsInput(inputContainerNode);
+    </script>
+  </body>
+</html>
