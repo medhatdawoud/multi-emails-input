@@ -1,5 +1,14 @@
 const listOfEmails = [];
 
+// polifill for the remove function for IE11
+if (!('remove' in Element.prototype)) {
+  Element.prototype['remove'] = function () {
+    if (this.parentNode) {
+      this.parentNode.removeChild(this);
+    }
+  };
+}
+
 function isValidEmail(email) {
   const expression = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
   return expression.test(email);
@@ -24,7 +33,9 @@ function addEmailToList(emailsContainer, email) {
     listOfEmails.push(email);
   }
   emailBlock.innerText = email;
-  emailBlock.addEventListener('click', (e) => e.stopPropagation());
+  emailBlock.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
 
   const removeBtn = document.createElement('span');
   removeBtn.innerHTML = '&times;';
@@ -34,9 +45,9 @@ function addEmailToList(emailsContainer, email) {
     this.parentElement.remove();
     checkAndFixInputPlaceHolder();
   });
-  emailBlock.append(removeBtn);
+  emailBlock.appendChild(removeBtn);
 
-  emailsContainer.append(emailBlock);
+  emailsContainer.appendChild(emailBlock);
   checkAndFixInputPlaceHolder();
 }
 
@@ -45,10 +56,10 @@ function EmailsInput(selector) {
   const emailsContainer = document.createElement('span');
   const input = document.createElement('input');
   input.classList.add('email-input');
-  input.placeholder = `add people...`;
+  input.placeholder = 'add people...';
   input.setAttribute('type', 'email');
 
-  input.addEventListener('keypress', (e) => {
+  input.addEventListener('keypress', function (e) {
     if (e.key === ',' || e.key === 'Enter') {
       if (e.target.value !== '') {
         addEmailToList(emailsContainer, e.target.value);
@@ -58,30 +69,31 @@ function EmailsInput(selector) {
     }
   });
 
-  input.addEventListener('blur', (e) => {
+  input.addEventListener('blur', function (e) {
     if (e.target.value !== '') {
       addEmailToList(emailsContainer, e.target.value);
       e.target.value = '';
     }
   });
 
-  input.addEventListener('paste', (e) => {
+  input.addEventListener('paste', function (e) {
     setTimeout(function () {
       const pastedContent = e.target.value.split(',');
-      pastedContent.forEach((element) => {
+      pastedContent.forEach(function (element) {
         addEmailToList(emailsContainer, element);
         e.target.value = '';
       });
     }, 50);
   });
 
-  selector.append(emailsContainer);
-  selector.addEventListener('click', () => {
+  selector.appendChild(emailsContainer);
+  selector.addEventListener('click', function () {
     input.focus();
   });
 
-  selector.append(input);
+  selector.appendChild(input);
 
+  // TODO: fix logic of the valid emails after deleting some is not correct
   return {
     value: listOfEmails,
   };

@@ -20,8 +20,8 @@
       const inputContainerNode = document.querySelector('#emails-input');
       const emailsInput = EmailsInput(inputContainerNode);
       const btnShowEmailsCount = document.getElementById('show-emails-count');
-      btnShowEmailsCount.addEventListener('click', (e) => {
-        alert(`Number of valid Emails: ${emailsInput.value.length}`);
+      btnShowEmailsCount.addEventListener('click', function (e) {
+        alert('Number of valid Emails: ' + emailsInput.value.length);
       });
     </script>
   </body>
