@@ -19,6 +19,6 @@ a small library to convert a div into a multiple emails input.
 
 ## Sample input 
 ```sh
-john@miro.com,invalid.email,mike@miro.com,alexander@miro.com
+john@email.com,invalid.email,mike@email.com,alexander@email.com
 ```
 
