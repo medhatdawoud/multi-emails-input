@@ -1,4 +1,4 @@
-const listOfEmails = [];
+const listOfValidEmails = [];
 
 // polifill for the remove function for IE11
 if (!('remove' in Element.prototype)) {
@@ -15,7 +15,7 @@ function isValidEmail(email) {
 }
 
 function checkAndFixInputPlaceHolder() {
-  const hasEmails = listOfEmails.length > 0;
+  const hasEmails = listOfValidEmails.length > 0;
   const inputBox = document.querySelector('input.email-input');
   if (hasEmails) {
     inputBox.placeholder = 'add more people...';
@@ -25,14 +25,31 @@ function checkAndFixInputPlaceHolder() {
 }
 
 function addEmailToList(emailsContainer, email) {
+  email = email.trim();
+  if (!email) return;
   const emailBlock = document.createElement('span');
+  emailBlock.innerText = email;
   emailBlock.classList.add('email-block');
+
+  if (listOfValidEmails.indexOf(email) > -1) {
+    emailBlock.classList.add('duplicate');
+    const tooltip = document.createElement('span');
+    tooltip.classList.add('tooltip');
+    tooltip.innerText = 'Duplicated email';
+    emailBlock.appendChild(tooltip);
+    emailBlock.addEventListener('mouseenter', function (e) {
+      tooltip.style.display = 'block';
+    });
+    emailBlock.addEventListener('mouseout', function (e) {
+      tooltip.style.display = 'none';
+    });
+  }
+
   if (!isValidEmail(email)) {
     emailBlock.classList.add('invalid-email');
   } else {
-    listOfEmails.push(email);
+    listOfValidEmails.push(email);
   }
-  emailBlock.innerText = email;
   emailBlock.addEventListener('click', function (e) {
     e.stopPropagation();
   });
@@ -41,14 +58,13 @@ function addEmailToList(emailsContainer, email) {
   removeBtn.innerHTML = '&times;';
   removeBtn.classList.add('remove-button');
   removeBtn.addEventListener('click', function () {
-    if (!this.parentElement.classList.contains('invalid-email')) {
-      listOfEmails.splice(this.parentElement.innerText, 1);
+    if (this.parentElement.className.indexOf(' invalid-email') === -1) {
+      listOfValidEmails.splice(this.parentElement.innerText, 1);
     }
     this.parentElement.remove();
     checkAndFixInputPlaceHolder();
   });
   emailBlock.appendChild(removeBtn);
-
   emailsContainer.appendChild(emailBlock);
   checkAndFixInputPlaceHolder();
 }
@@ -56,6 +72,7 @@ function addEmailToList(emailsContainer, email) {
 function EmailsInput(selector) {
   selector.classList.add('emails-input');
   const emailsContainer = document.createElement('span');
+  emailsContainer.classList.add('emails-container');
   const input = document.createElement('input');
   input.classList.add('email-input');
   input.placeholder = 'add people...';
@@ -96,6 +113,7 @@ function EmailsInput(selector) {
   selector.appendChild(input);
 
   return {
-    value: listOfEmails,
+    list: listOfValidEmails,
+    addEmail: (email) => addEmailToList(emailsContainer, email),
   };
 }

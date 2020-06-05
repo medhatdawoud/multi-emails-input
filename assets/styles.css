@@ -72,11 +72,42 @@ strong {
   margin-bottom: 7px;
 }
 
-.invalid-email {
+.email-block.invalid-email {
   background: #fff;
   border-radius: 0;
   padding: 0;
   border-bottom: 1px dashed red;
+}
+
+.email-block.duplicate {
+  background: #ffdada;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  background: #000000;
+  color: #fff;
+  white-space: nowrap;
+  top: 110%;
+  left: 0;
+  z-index: 2;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  text-align: center;
+  display: none;
+}
+
+.tooltip:after {
+  content: ' ';
+  position: absolute;
+  left: 40%;
+  bottom: 80%;
+  display: block;
+  border-bottom: 10px solid #000;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
 }
 
 .remove-button {

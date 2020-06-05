@@ -21,7 +21,22 @@
       const emailsInput = EmailsInput(inputContainerNode);
       const btnShowEmailsCount = document.getElementById('show-emails-count');
       btnShowEmailsCount.addEventListener('click', function (e) {
-        alert('Number of valid Emails: ' + emailsInput.value.length);
+        alert('Number of valid Emails: ' + emailsInput.list.length);
+      });
+      const btnAddRandomEmail = document.getElementById('add-random-email');
+      const listOfRandomEmails = [
+        'medhat@miro.com',
+        'adam@miro.com',
+        'john@miro.com',
+        'mike@miro.com',
+        'alexander@miro.com',
+      ];
+      btnAddRandomEmail.addEventListener('click', function (e) {
+        emailsInput.addEmail(
+          listOfRandomEmails[
+            Math.floor(Math.random() * listOfRandomEmails.length)
+          ]
+        );
       });
     </script>
   </body>
