@@ -20,7 +20,24 @@ body {
 
 .emails-form {
   background: #f8f8f7;
-  padding: 50px;
+  padding: 50px 50px 24px;
+}
+
+.action-bar {
+  padding: 24px 50px;
+}
+
+.button {
+  background: #4262ff;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 4px;
+}
+
+.button + .button {
+  margin-left: 16px;
 }
 
 h1 {

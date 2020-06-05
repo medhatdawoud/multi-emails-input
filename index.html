@@ -11,10 +11,18 @@
       <h1>Share <strong>Board name</strong> with others</h1>
       <div id="emails-input"></div>
     </div>
+    <div class="action-bar">
+      <button class="button" id="add-random-email">Add email</button>
+      <button class="button" id="show-emails-count">Get emails count</button>
+    </div>
     <script src="./emails-input.js"></script>
     <script>
-      var inputContainerNode = document.querySelector('#emails-input');
-      var emailsInput = EmailsInput(inputContainerNode);
+      const inputContainerNode = document.querySelector('#emails-input');
+      const emailsInput = EmailsInput(inputContainerNode);
+      const btnShowEmailsCount = document.getElementById('show-emails-count');
+      btnShowEmailsCount.addEventListener('click', (e) => {
+        alert(`Number of valid Emails: ${emailsInput.value.length}`);
+      });
     </script>
   </body>
 </html>

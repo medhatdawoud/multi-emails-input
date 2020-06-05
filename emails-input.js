@@ -20,6 +20,8 @@ function addEmailToList(emailsContainer, email) {
   emailBlock.classList.add('email-block');
   if (!isValidEmail(email)) {
     emailBlock.classList.add('invalid-email');
+  } else {
+    listOfEmails.push(email);
   }
   emailBlock.innerText = email;
   emailBlock.addEventListener('click', (e) => e.stopPropagation());
@@ -34,7 +36,6 @@ function addEmailToList(emailsContainer, email) {
   });
   emailBlock.append(removeBtn);
 
-  listOfEmails.push(email);
   emailsContainer.append(emailBlock);
   checkAndFixInputPlaceHolder();
 }
@@ -80,4 +81,8 @@ function EmailsInput(selector) {
   });
 
   selector.append(input);
+
+  return {
+    value: listOfEmails,
+  };
 }
