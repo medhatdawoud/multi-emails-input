@@ -67,6 +67,7 @@ strong {
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
   cursor: pointer;
+  user-select: none;
 }
 
 .invalid-email .remove-button {
@@ -78,6 +79,6 @@ strong {
   font-size: 14px;
   line-height: 24px;
   padding: 0 7px;
-  margin: 0 0 7px 0;
+  margin: 3px 0 7px 0;
   outline: none;
 }
