@@ -41,7 +41,9 @@ function addEmailToList(emailsContainer, email) {
   removeBtn.innerHTML = '&times;';
   removeBtn.classList.add('remove-button');
   removeBtn.addEventListener('click', function () {
-    listOfEmails.splice(this.parentElement.innerText, 1);
+    if (!this.parentElement.classList.contains('invalid-email')) {
+      listOfEmails.splice(this.parentElement.innerText, 1);
+    }
     this.parentElement.remove();
     checkAndFixInputPlaceHolder();
   });
@@ -93,7 +95,6 @@ function EmailsInput(selector) {
 
   selector.appendChild(input);
 
-  // TODO: fix logic of the valid emails after deleting some is not correct
   return {
     value: listOfEmails,
   };
