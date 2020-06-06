@@ -23,6 +23,10 @@ body {
   padding: 50px 50px 24px;
 }
 
+#emails-input {
+  height: 100px;
+}
+
 .action-bar {
   padding: 24px 50px;
 }

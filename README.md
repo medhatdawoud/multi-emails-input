@@ -1,19 +1,48 @@
 # multi-emails-input
+multi-emails-input is a small library to convert a div into a multiple emails input, basically if you have any `div` and you want to convert it into a multi emails input this lib is best to do that.
 
-a small library to convert a div into a multiple emails input.
+## How to use?
+You can start by adding the JavaScript file into html.
+```html
+<script src="<PATH_TO_LIB>/emails-input.js"></script>
+```
+Also add the CSS file into your head tag
+```html
+<link rel="stylesheet" src="<PATH_TO_LIB>/emails-input.css" />
+```
+You can wrap your div selector with the provided function as follow:
+```html
+<div id="emails-input"></div>
+<script>
+	const inputContainerNode = document.querySelector('#emails-input');
+	const emailsInput = EmailsInput(inputContainerNode);
+</script>
+```
+This will convert the normal div into a multi emails input container.
+
+![](https://i.imgur.com/JR7DHZz.gif)
 
 ## features
+- Email block can be created by pressing Enter, entering comma, or by losing focus on the input field.
+- A Block can be deleted
+- If input has too many emails, user can scroll it.
+- Pasted emails will be converted into blocks immediately. If multiple comma-separated emails are pasted (e.g., “max@mail.ru, ivan@mail.ru”), they should be converted into multiple blocks.
+- Tests are not mandatory, but having them is a plus.
+- Duplicated emails have different style to expose them.
+- `EmailsInput` function as shown in the example above returns an object of 2 
+	- `list`: an array of valid emails as shown in the element.
+	- `addEmail`: a function that you can send an email and it will be added to the list.
 
-- [x] EmailsEditor component can be possible to use in any other form or app independently.
-- [x] Email block should be created by pressing Enter, entering comma, or by losing focus on the input field. A Block can be deleted.
-- [x] Input width must depend on the parent container’s width and height. If parent width changes, emails should be redistributed by rows.
-- [x] Other than that input should neither depend on the form or page styles, nor conflict with them.
-- [x] If input has too many emails, user should be able to scroll it.
-- [x] Pasted emails should be converted into blocks immediately. If multiple comma-separated emails are pasted (e.g., “​ivan@mail.ru​, ​max@mail.ru​”), they should be converted into multiple blocks.
-- [x] "​Add email​" button adds a random email to the list.
-- [x] "​Get emails count​" button shows an alert with valid emails count.
-- [x] Do NOT implement editing of added emails.
-- [x] It should be possible to create several emails editors on the same page.
-- [x] emails-input​ should have no external dependencies like React, Lodash or any polyfills. Usage of TypeScript, Less, Webpack, etc. is for your consideration.
-- [ ] Tests are not mandatory, but having them is a plus.
-- [x] Performance isn’t a big concern, but there should be no major flaws, such as memory leaks or re-rendering all email blocks every time you add or remove a single email.
+## Options
+* `limitEmailsToDomain`: is an option to define what email is valid and what is not so for example if you provided this option as `gmail` then any email other than gmail will be considered as invalid.
+* `invalidEmailClass`: is an option to provide a different class for the invalid emails that overrides the default style in case the user needs to.
+* `validEmailClass`: is an option to provide a different class for the valid emails same as the invalid one.
+* Example: 
+```js
+const emailsInput = EmailsInput(inputContainerNode, {
+	limitEmailsToDomain: 'gmail',
+	invalidEmailClass: 'custom-invalid-email',
+	validEmailClass: 'custom-valid-email'
+});
+```
+
