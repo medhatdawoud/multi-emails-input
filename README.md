@@ -32,13 +32,14 @@ This will convert the normal div into a multi emails input container.
 
 ## Features
 
-- Email block can be created by pressing Enter, entering comma, or by losing focus on the input field.
-- A Block can be deleted
-- If input has too many emails, user can scroll it.
-- Pasted emails will be converted into blocks immediately. If multiple comma-separated emails are pasted (e.g., “max@mail.ru, ivan@mail.ru”), they should be converted into multiple blocks.
-- Tests are not mandatory, but having them is a plus.
-- Duplicated emails have different style to expose them.
-- `EmailsInput` function as shown in the example above returns an object of 2 - `list`: an array of valid emails as shown in the element. - `addEmail`: a function that you can send an email and it will be added to the list.
+- Email block can be created by pressing `Enter`, entering comma `,` , or by losing focus on the input field `blur` event.
+- A Block can be deleted by the `X` sign in each block.
+- Pasted emails will be converted into blocks immediately. (e.g., “`max@mail.ru`, `ivan@mail.ru`”) they should be converted into multiple blocks.
+- Invalid emails are not added to the returned list.
+- Duplicated emails have different style to expose them and can be deleted.
+- `EmailsInput` function as shown in the example above returns an object of 2 
+  - `list`: an array of valid emails as shown in the element. 
+  - `addEmail`: a function that you can send an email and it will be added to the list.
 
 ## Options
 
