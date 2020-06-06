@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./lib/emails-input.css" />
     <link rel="stylesheet" href="./assets/styles.css" />
     <title>Emails input</title>
   </head>
@@ -15,7 +16,7 @@
       <button class="button" id="add-random-email">Add email</button>
       <button class="button" id="show-emails-count">Get emails count</button>
     </div>
-    <script src="./emails-input.js"></script>
+    <script src="./lib/emails-input.js"></script>
     <script>
       const inputContainerNode = document.querySelector('#emails-input');
       const emailsInput = EmailsInput(inputContainerNode);
@@ -26,10 +27,16 @@
       const btnAddRandomEmail = document.getElementById('add-random-email');
       const listOfRandomEmails = [
         'medhat@miro.com',
+        'maha@miro.com',
+        'karma@miro.com',
         'adam@miro.com',
         'john@miro.com',
         'mike@miro.com',
-        'alexander@miro.com',
+        'dirk@miro.com',
+        'thomas@miro.com',
+        'irina@miro.com',
+        'andrew@miro.com',
+        'mo@miro.com',
       ];
       btnAddRandomEmail.addEventListener('click', function (e) {
         emailsInput.addEmail(

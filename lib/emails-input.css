@@ -1,0 +1,80 @@
+.emails-input {
+  background: #fff;
+  border: 1px solid #c3c2cf;
+  border-radius: 4px;
+  height: 96px;
+  overflow-y: auto;
+  padding: 7px 7px 0;
+}
+
+.email-block {
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 0 0 7px;
+  border-radius: 100px;
+  display: inline-block;
+  background: rgba(102, 153, 255, 0.2);
+  margin-right: 7px;
+  margin-bottom: 7px;
+}
+
+.invalid-email {
+  background: #fff;
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px dashed red;
+}
+
+.duplicate {
+  background: #ffdada;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  background: #000000;
+  color: #fff;
+  white-space: nowrap;
+  top: 110%;
+  left: 0;
+  z-index: 2;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  text-align: center;
+  display: none;
+}
+
+.tooltip:after {
+  content: ' ';
+  position: absolute;
+  left: 40%;
+  bottom: 80%;
+  display: block;
+  border-bottom: 10px solid #000;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.remove-button {
+  padding: 0 7px;
+  font-size: 18px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.invalid-email .remove-button {
+  padding-right: 0;
+}
+
+.email-input {
+  border: none;
+  font-size: 14px;
+  line-height: 24px;
+  min-height: 24px;
+  padding: 0 7px;
+  margin: 3px 0 7px 0;
+  outline: none;
+}
