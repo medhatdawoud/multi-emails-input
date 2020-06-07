@@ -2,6 +2,8 @@
 
 multi-emails-input is a small library to convert a div into a multiple emails input, basically if you have any `div` and you want to convert it into a multi emails input this lib is best to do that.
 
+This lib is written in pure JavaScript and could be converted to an npm package if needed.
+
 ## How to use?
 
 You can start by adding the JavaScript file into html.
@@ -40,6 +42,8 @@ This will convert the normal div into a multi emails input container.
 - `EmailsInput` function as shown in the example above returns an object of 2 
   - `list`: an array of valid emails as shown in the element. 
   - `addEmail`: a function that you can send an email and it will be added to the list.
+- all code has JSDOC provided that should help in types.
+- library is tested and is working fine on all browsers including `ie11`.
 
 ## Options
 
