@@ -22,7 +22,7 @@
       const emailsInput = EmailsInput(inputContainerNode);
       const btnShowEmailsCount = document.getElementById('show-emails-count');
       btnShowEmailsCount.addEventListener('click', function (e) {
-        alert('Number of valid Emails: ' + emailsInput.list.length);
+        alert('Number of valid Emails: ' + emailsInput.getEmailsList().length);
       });
       const btnAddRandomEmail = document.getElementById('add-random-email');
       const listOfRandomEmails = [

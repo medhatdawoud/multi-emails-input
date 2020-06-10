@@ -40,7 +40,7 @@ This will convert the normal div into a multi emails input container.
 - Invalid emails are not added to the returned list.
 - Duplicated emails have different style to expose them and can be deleted.
 - `EmailsInput` function as shown in the example above returns an object of 2 
-  - `list`: an array of valid emails as shown in the element. 
+  - `getEmailsList`: an function that returns an array of valid emails as shown in the element. 
   - `addEmail`: a function that you can send an email and it will be added to the list.
 - all code has JSDOC provided that should help in types.
 - library is tested and is working fine on all browsers including `ie11`.
